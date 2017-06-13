@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+<p><a href="{% url 'names:winners' %}" role="button" class="btn btn-success">Get winners</a></p>
+    <hr>
+
+    <form  action="" method="POST" id='note_form'>{% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" class="btn btn-default" value="Add" />
+    </form>
+
+    {% for obj in object_list %}
+  <div class="col-sm-6 col-md-4">
+  <div class="row">
+    <div class="thumbnail">
+      <div class="caption">
+        <h2>Name: {{ obj.name }}</h2>
+        <form action="{% url 'names:delete' obj.id %}" method="post">{% csrf_token %}
+            <input type="submit" value="Delete" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    {% endfor %}
+        
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <h2>Winners:</h2>
+    {% for winner in winner_list %}
+    <h3>{{ winner.name }}</h3>
+    {% endfor %}
+</div>
+    <p><a href="{% url 'names:list' %}" role="button" class="btn btn-success">Home</a></p>
+    <hr>
+        
+{% endblock content %}
